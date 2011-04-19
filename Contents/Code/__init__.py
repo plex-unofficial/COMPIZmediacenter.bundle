@@ -36,8 +36,8 @@ CACHE_INTERVAL  = 3600
 Protected 	= "No"
 Username 	= 'nmt'
 Password 	= 'nmt'
-MainArt         = "%s/:/resources/%s" % (PLUGIN_PREFIX, "background-art.png")
-MainThumb       = "%s/:/resources/%s" % (PLUGIN_PREFIX, "thumb-art.jpg")
+MainArt         = "%s/:/resources/%s" % (PLUGIN_PREFIX, "art-default.png")
+MainThumb       = "%s/:/resources/%s" % (PLUGIN_PREFIX, "icon-default.jpg")
 SecondSelection = ""
 SecondSelectionLogo = ""
 zaehler         = 1
@@ -81,7 +81,7 @@ Log('(PLUG-IN) Finished importing libraries & setting global variables')
 def Start():
 
         # Add the MainMenu prefix handler
-        Plugin.AddPrefixHandler(PLUGIN_PREFIX, MainMenu, L('COMPIZmediacenter'), 'thumb-art.jpg', 'background-art.jpg')
+        Plugin.AddPrefixHandler(PLUGIN_PREFIX, MainMenu, L('COMPIZmediacenter'), 'icon-default.jpg', 'art-default.png')
 
         # Set up view groups
         Plugin.AddViewGroup("List", viewMode="List", mediaType="items")
@@ -110,8 +110,8 @@ def MainMenu(sender = None, Hallo = None):
 
         Log('(PLUG-IN) **==> ENTER Main Menu')
         if MainThumb == None:
-                MainArt         = "%s/:/resources/%s" % (PLUGIN_PREFIX, "background-art.png")
-                MainThumb       = "%s/:/resources/%s" % (PLUGIN_PREFIX, "thumb-art.jpg")
+                MainArt         = "%s/:/resources/%s" % (PLUGIN_PREFIX, "art-default.png")
+                MainThumb       = "%s/:/resources/%s" % (PLUGIN_PREFIX, "icon-default.jpg")
 
         dir = MediaContainer(art = MainArt, title1="COMPIZmediacenter", viewGroup="List")
 
@@ -145,8 +145,8 @@ def LevelOneMenu(sender, url, tvid):
 
         Log('(PLUG-IN) **==> ENTER Level One Menu')
         if MainThumb == None:
-                MainArt         = "%s/:/resources/%s" % (PLUGIN_PREFIX, "background-art.png")
-                MainThumb       = "%s/:/resources/%s" % (PLUGIN_PREFIX, "thumb-art.jpg")
+                MainArt         = "%s/:/resources/%s" % (PLUGIN_PREFIX, "art-default.png")
+                MainThumb       = "%s/:/resources/%s" % (PLUGIN_PREFIX, "icon-default.jpg")
 
         # Who did call us ... what was selected on Front Page
         wer = sender.itemTitle
@@ -362,8 +362,8 @@ def LevelTwoMenu(sender, url, papa, alt, thumb):
         Log('(PLUG-IN) **==> ENTER: Level Two Menu')
 
         if MainThumb == None:
-                MainArt         = "%s/:/resources/%s" % (PLUGIN_PREFIX, "background-art.png")
-                MainThumb       = "%s/:/resources/%s" % (PLUGIN_PREFIX, "thumb-art.jpg")
+                MainArt         = "%s/:/resources/%s" % (PLUGIN_PREFIX, "art-default.png")
+                MainThumb       = "%s/:/resources/%s" % (PLUGIN_PREFIX, "icon-default.jpg")
 
         # Get the items for the FRONT page ... all WEB-PAGES & Thumbs
         if len(FrontPage) == 0:
@@ -1059,7 +1059,7 @@ def LevelTwoMenu(sender, url, papa, alt, thumb):
                                 THUMB = ROOT_URL + THUMB.split('..')[1]
 
                         except:
-                                THUMB = R("background-art.png")
+                                THUMB = R("art-default.png")
 
                         #Log('THUMB in Page: %s' % THUMB)
 
@@ -1223,8 +1223,8 @@ def LevelThreeMenu(sender, url):
         Log('(PLUG-IN) **==> ENTER Level Three Menu')
 
         if MainThumb == None:
-                MainArt         = "%s/:/resources/%s" % (PLUGIN_PREFIX, "background-art.png")
-                MainThumb       = "%s/:/resources/%s" % (PLUGIN_PREFIX, "thumb-art.jpg")
+                MainArt         = "%s/:/resources/%s" % (PLUGIN_PREFIX, "art-default.png")
+                MainThumb       = "%s/:/resources/%s" % (PLUGIN_PREFIX, "icon-default.jpg")
 
         URL = url
         DATE = date
@@ -1234,7 +1234,7 @@ def LevelThreeMenu(sender, url):
         THUMB = thumb
 
         dir = MediaContainer(title1=sender.title2, title2=sender.itemTitle, viewGroup="Info")
-        dir.Append(VideoItem(URL, title = DATE, subtitle=SUBTITLE, summary=DESCRIPTION, duration=DURATION, thumb=THUMB, art = R("background-art.png")))
+        dir.Append(VideoItem(URL, title = DATE, subtitle=SUBTITLE, summary=DESCRIPTION, duration=DURATION, thumb=THUMB, art = R("art-default.png")))
 
         Log('(PLUG-IN) <==** EXIT Level Three Menu')
 
@@ -1269,8 +1269,8 @@ def LoadFP():
         Log('(PLUG-IN) **==> ENTER Load FIRST Page COMPIZMediacenter')
 
         if MainThumb == None:
-                MainArt         = "%s/:/resources/%s" % (PLUGIN_PREFIX, "background-art.png")
-                MainThumb       = "%s/:/resources/%s" % (PLUGIN_PREFIX, "thumb-art.jpg")
+                MainArt         = "%s/:/resources/%s" % (PLUGIN_PREFIX, "art-default.png")
+                MainThumb       = "%s/:/resources/%s" % (PLUGIN_PREFIX, "icon-default.jpg")
 
         # Get the MAIN Page
         Log("(PLUG-IN) Try ROOT_URL: %s" % (ROOT_URL))
@@ -1316,7 +1316,7 @@ def LoadFP():
                         # The THUMB url (src) is in the next section <img> and thus we need to find this first before we can GET the src-info.
                         THUMB = ROOT_URL+SenderSet.find('img').get('src')
                 except:
-                        THUMB = R("background-art.png")
+                        THUMB = R("art-default.png")
 
                 try:
                         TITLE = Sendernamen[sender]
@@ -1341,8 +1341,8 @@ def ZDF(sender):
         Log('(PLUG-IN) **==> ENTER Load FIRST Page ZDF Mediathek')
 
         if MainThumb == None:
-                MainArt         = "%s/:/resources/%s" % (PLUGIN_PREFIX, "background-art.png")
-                MainThumb       = "%s/:/resources/%s" % (PLUGIN_PREFIX, "thumb-art.jpg")
+                MainArt         = "%s/:/resources/%s" % (PLUGIN_PREFIX, "art-default.png")
+                MainThumb       = "%s/:/resources/%s" % (PLUGIN_PREFIX, "icon-default.jpg")
 
         ZDFChannel = []
 
@@ -1395,7 +1395,7 @@ def ZDF(sender):
                         # The THUMB url (src) is in the next section <img> and thus we need to find this first before we can GET the src-info.
                         THUMB = SeitenSet.find('img').get('src')
                 except:
-                        THUMB = R("background-art.png")
+                        THUMB = R("art-default.png")
 
                 try:
                         # The description (alt) is in the next section <img> and thus we need to find this first before we can GET the src-info.
@@ -1430,8 +1430,8 @@ def ZDFStreams(channel):
         Log('(PLUG-IN) **==> ENTER Load VIDEOITEM Page ZDF Mediathek')
 
         if MainThumb == None:
-                MainArt         = "%s/:/resources/%s" % (PLUGIN_PREFIX, "background-art.png")
-                MainThumb       = "%s/:/resources/%s" % (PLUGIN_PREFIX, "thumb-art.jpg")
+                MainArt         = "%s/:/resources/%s" % (PLUGIN_PREFIX, "art-default.png")
+                MainThumb       = "%s/:/resources/%s" % (PLUGIN_PREFIX, "icon-default.jpg")
 
         # Test if we need ID - PW ... and get it
         check = getURL(channel, False)
@@ -1482,7 +1482,7 @@ def ZDFStreams(channel):
                         THUMB = PageSet.find('img').get('src')
 
                 except:
-                        THUMB = R("background-art.png")
+                        THUMB = R("art-default.png")
 
                 NextPage = NextPage + [(URL, TVID, THUMB)]
 
@@ -1507,8 +1507,8 @@ def TrailerStreams(channel):
         Log('(PLUG-IN) **==> ENTER Load VIDEOITEM Page Trailers')
 
         if MainThumb == None:
-                MainArt         = "%s/:/resources/%s" % (PLUGIN_PREFIX, "background-art.png")
-                MainThumb       = "%s/:/resources/%s" % (PLUGIN_PREFIX, "thumb-art.jpg")
+                MainArt         = "%s/:/resources/%s" % (PLUGIN_PREFIX, "art-default.png")
+                MainThumb       = "%s/:/resources/%s" % (PLUGIN_PREFIX, "icon-default.jpg")
 
         # Test if we need ID - PW ... and get it
         check = getURL(channel, False)
@@ -1581,7 +1581,7 @@ def TrailerStreams(channel):
                         THUMB = PageSet.find('img').get('src')
 
                 except:
-                        THUMB = R("background-art.png")
+                        THUMB = R("art-default.png")
 
                 NextPage = NextPage + [(URL, TVID, THUMB)]
 
@@ -1606,8 +1606,8 @@ def ArteStreams(channel):
         Log('(PLUG-IN) **==> ENTER Load VIDEOITEM Page ARTE')
 
         if MainThumb == None:
-                MainArt         = "%s/:/resources/%s" % (PLUGIN_PREFIX, "background-art.png")
-                MainThumb       = "%s/:/resources/%s" % (PLUGIN_PREFIX, "thumb-art.jpg")
+                MainArt         = "%s/:/resources/%s" % (PLUGIN_PREFIX, "art-default.png")
+                MainThumb       = "%s/:/resources/%s" % (PLUGIN_PREFIX, "icon-default.jpg")
 
         # Test if we need ID - PW ... and get it
         check = getURL(channel, False)
@@ -1699,7 +1699,7 @@ def ArteStreams(channel):
                         THUMB = ROOT_URL + THUMB.split('..')[1]
 
                 except:
-                        THUMB = R("background-art.png")
+                        THUMB = R("art-default.png")
 
                 NextPage = NextPage + [(URL, TVID, THUMB)]
 
@@ -1720,8 +1720,8 @@ def PlayArteVideo(sender, url, papa, alt, thumb):
         Log('(PLUG-IN) **==> ENTER: Play Arte Video')
 
         if MainThumb == None:
-                MainArt         = "%s/:/resources/%s" % (PLUGIN_PREFIX, "background-art.png")
-                MainThumb       = "%s/:/resources/%s" % (PLUGIN_PREFIX, "thumb-art.jpg")
+                MainArt         = "%s/:/resources/%s" % (PLUGIN_PREFIX, "art-default.png")
+                MainThumb       = "%s/:/resources/%s" % (PLUGIN_PREFIX, "icon-default.jpg")
 
         # Get the items for the FRONT page ... all WEB-PAGES & Thumbs
         if len(FrontPage) == 0:
@@ -1828,8 +1828,8 @@ def ARD(sender):
         Log('(PLUG-IN) **==> ENTER Load FIRST Page ARD Mediathek')
 
         if MainThumb == None:
-                MainArt         = "%s/:/resources/%s" % (PLUGIN_PREFIX, "background-art.png")
-                MainThumb       = "%s/:/resources/%s" % (PLUGIN_PREFIX, "thumb-art.jpg")
+                MainArt         = "%s/:/resources/%s" % (PLUGIN_PREFIX, "art-default.png")
+                MainThumb       = "%s/:/resources/%s" % (PLUGIN_PREFIX, "icon-default.jpg")
 
         ARDChannel = []
 
@@ -1879,7 +1879,7 @@ def ARD(sender):
                         # The THUMB url (src) is in the next section <img> and thus we need to find this first before we can GET the src-info.
                         THUMB = SenderTHUMB
                 except:
-                        THUMB = R("background-art.png")
+                        THUMB = R("art-default.png")
 
                 try:
                         # The description (alt) is in the next section <img> and thus we need to find this first before we can GET the src-info.
@@ -1916,8 +1916,8 @@ def ARDStreams(channel):
         Log('(PLUG-IN) **==> ENTER Load VIDEOITEM Page ARD Mediathek')
 
         if MainThumb == None:
-                MainArt         = "%s/:/resources/%s" % (PLUGIN_PREFIX, "background-art.png")
-                MainThumb       = "%s/:/resources/%s" % (PLUGIN_PREFIX, "thumb-art.jpg")
+                MainArt         = "%s/:/resources/%s" % (PLUGIN_PREFIX, "art-default.png")
+                MainThumb       = "%s/:/resources/%s" % (PLUGIN_PREFIX, "icon-default.jpg")
 
         # Test if we need ID - PW ... and get it
         check = getURL(channel, False)
@@ -1988,7 +1988,7 @@ def ARDStreams(channel):
                         THUMB = PageSet.find('img').get('src')
 
                 except:
-                        THUMB = R("background-art.png")
+                        THUMB = R("art-default.png")
 
                 NextPage = NextPage + [(URL, TVID, THUMB)]
 
